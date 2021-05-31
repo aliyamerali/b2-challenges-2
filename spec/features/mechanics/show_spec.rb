@@ -41,5 +41,19 @@ RSpec.describe 'Mechanic show page' do
      expect(@devil.name).to appear_before(@cups.name)
    end
 
+   it 'has a form to add a ride to the workload for the mechanic' do
+     visit "/mechanics/#{@mech_2.id}"
+     expect(page).to have_field("Ride ID:")
+   end
+
+   it 'upon submitting a ride id, returns to the show page with that ride listed' do
+     visit "/mechanics/#{@mech_2.id}"
+     fill_in 'Ride ID:', with: "#{@log_flume.id}"
+     click_button 'Submit'
+
+     expect(page).to have_current_path("/mechanics/#{@mech_2.id}")
+     expect(page).to havecontent(@log_flume.name)
+   end
+
 
 end
