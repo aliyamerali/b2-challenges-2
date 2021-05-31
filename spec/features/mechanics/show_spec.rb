@@ -49,10 +49,10 @@ RSpec.describe 'Mechanic show page' do
    it 'upon submitting a ride id, returns to the show page with that ride listed' do
      visit "/mechanics/#{@mech_2.id}"
      fill_in 'Ride ID:', with: "#{@log_flume.id}"
-     click_button 'Submit'
+     click_button 'Add Ride'
 
      expect(page).to have_current_path("/mechanics/#{@mech_2.id}")
-     expect(page).to havecontent(@log_flume.name)
+     expect(page).to have_content(@log_flume.name)
    end
 
 

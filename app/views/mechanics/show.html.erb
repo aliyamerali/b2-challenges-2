@@ -5,6 +5,13 @@
 <h5>Rides:</h5>
 <ul>
 <% @rides.each do |ride| %>
-  <li><%= ride.name %></li>  
+  <li><%= ride.name %></li>
 <% end %>
 </ul>
+
+<h5>Add a ride to the workload:</h5>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |f| %>
+  <%= f.label :ride_id, "Ride ID:" %>
+  <%= f.number_field :ride_id %>
+  <%= f.submit "Add Ride" %>
+<% end %>
