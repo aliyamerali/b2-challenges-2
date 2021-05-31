@@ -17,27 +17,27 @@ RSpec.describe 'Mechanic show page' do
   end
 
    it "shows the mechanics name, years experience" do
-     visit "/mechanics#{@mech_1.id}"
+     visit "/mechanics/#{@mech_1.id}"
      expect(page).to have_content(@mech_1.name)
      expect(page).to have_content(@mech_1.years_experience)
 
-     visit "/mechanics#{@mech_2.id}"
+     visit "/mechanics/#{@mech_2.id}"
      expect(page).to have_content(@mech_2.name)
      expect(page).to have_content(@mech_2.years_experience)
    end
 
-   it "shows the open rides the mecanic is working on" do
-     visit "/mechanics#{@mech_1.id}"
+   it "shows the open rides the mechanic is working on" do
+     visit "/mechanics/#{@mech_1.id}"
      expect(page).to have_content(@log_flume.name)
      expect(page).to_not have_content(@thunder.name)
 
-     visit "/mechanics#{@mech_2.id}"
+     visit "/mechanics/#{@mech_2.id}"
      expect(page).to have_content(@cups.name)
      expect(page).to have_content(@devil.name)
    end
 
    it "shows rides in order of thrill rating - highest to lowest" do
-     visit "/mechanics#{@mech_2.id}"
+     visit "/mechanics/#{@mech_2.id}"
      expect(@devil.name).to appear_before(@cups.name)
    end
 
