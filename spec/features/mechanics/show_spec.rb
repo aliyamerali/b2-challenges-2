@@ -5,10 +5,11 @@ RSpec.describe 'Mechanic show page' do
     @mech_1 = Mechanic.create!(name: "Salty Sal", years_experience: 12)
     @mech_2 = Mechanic.create!(name: "Tough Tony", years_experience: 23)
 
-    @log_flume = Ride.create!(name: "Log flume", thrill_rating: 5, open: true)
-    @thunder = Ride.create!(name: "Rolling Thunder", thrill_rating: 10, open: false)
-    @cups = Ride.create!(name: "Tea Cups", thrill_rating: 3, open: true)
-    @devil = Ride.create!(name: "Tazmanian Devil", thrill_rating: 6, open: true)
+    @park = Park.create!(name: "Six Flags", admission_price: 49.99 )
+    @log_flume = @park.rides.create!(name: "Log flume", thrill_rating: 5, open: true)
+    @thunder = @park.rides.create!(name: "Rolling Thunder", thrill_rating: 10, open: false)
+    @cups = @park.rides.create!(name: "Tea Cups", thrill_rating: 3, open: true)
+    @devil = @park.rides.create!(name: "Tazmanian Devil", thrill_rating: 6, open: true)
 
     @mech_1.rides << @log_flume
     @mech_1.rides << @thunder
